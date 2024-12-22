@@ -1,5 +1,3 @@
-@use '../../../scss/variables' as c;
-
 .button {
-    color: c.$c-typo-3;
+  color: var(--c-red);
 }
