@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-type Theme = [toggleTheme: () => void, theme: string];
+type Theme = [() => void, string];
 
 const useTheme = (): Theme => {
   const localStorageTheme = localStorage.getItem("theme") as string;
