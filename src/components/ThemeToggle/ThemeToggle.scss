@@ -1,4 +1,4 @@
-@use "../../scss/variables/colors" as tc;
+@use "@scss/variables" as v;
 
 .toggle-wrapper {
   max-width: 250px;
@@ -28,7 +28,7 @@
 }
 
 .toggle-theme:hover {
-  background-color: var(--c-light-purple);
+  background-color: var(--c-bg-4);
 }
 
 .toggle {
@@ -36,7 +36,7 @@
   position: absolute;
   top: 2px;
   padding: 10px;
-  background-color: tc.$c-white;
+  background-color: v.$c-white;
   border-radius: 50%;
   cursor: pointer;
 }
