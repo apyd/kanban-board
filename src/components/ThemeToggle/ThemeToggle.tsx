@@ -1,27 +1,28 @@
 import useTheme from "@hooks/useTheme";
 import SunIcon from "@assets/icons/sun.svg?react";
 import MoonIcon from "@assets/icons/moon.svg?react";
-
 import "./ThemeToggle.scss";
 
 const ThemeToggle = () => {
   const [toggleTheme, theme] = useTheme();
 
+  const isLightThemeActive = theme === "light";
+
   return (
     <div
       className="toggle-wrapper"
-      data-theme={theme === "light" ? "light" : "dark"}
+      data-theme={isLightThemeActive ? "light" : "dark"}
     >
-      <SunIcon className="theme-icon sun-icon" />
+      <SunIcon className="theme-icon" />
       <button className="toggle-theme-button" onClick={toggleTheme}>
         <div className="toggle-theme"></div>
         <div
           className={`${
-            theme === "light" ? "light-theme-toggle" : "dark-theme-toggle"
+            isLightThemeActive ? "light-theme-toggle" : "dark-theme-toggle"
           } toggle`}
         ></div>
       </button>
-      <MoonIcon className="theme-icon moon-icon" />
+      <MoonIcon className="theme-icon" />
     </div>
   );
 };
