@@ -1,10 +1,11 @@
-@use 'variables' as *;
+@use "variables" as *;
 
 @mixin light-theme {
   //bg
   --c-bg: #{$c-white};
   --c-bg-2: #{$c-grey-200};
   --c-bg-3: #{$c-grey-100};
+  --c-light-purple: #{$c-light-purple};
 
   //typography
   --c-typo-1: #{$c-grey-300};
