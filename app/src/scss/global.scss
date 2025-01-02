@@ -10,6 +10,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+}
+
+:root[data-theme="light"] {
   @include t.light-theme();
 }
 
@@ -38,6 +41,7 @@ ol {
 body {
   min-width: 320px;
   height: 100%;
+  background-color: var(--c-bg);
 }
 
 a {

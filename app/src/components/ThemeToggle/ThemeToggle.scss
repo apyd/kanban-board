@@ -1,0 +1,57 @@
+@use "@scss/variables" as v;
+
+.toggle-wrapper {
+  max-width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: var(--c-bg-2);
+  border-radius: 10px;
+}
+
+.toggle-theme-button {
+  width: 40%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: var(--c-bg-2);
+}
+
+.toggle-theme {
+  width: 60%;
+  padding: 12px;
+  background-color: var(--c-purple);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.toggle-theme:hover {
+  background-color: var(--c-bg-4);
+}
+
+.toggle {
+  width: 10%;
+  position: absolute;
+  top: 2px;
+  padding: 10px;
+  background-color: v.$c-white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.theme-icon {
+  width: 20px;
+  color: var(--c-typo-1);
+}
+
+.dark-theme-toggle {
+  transform: translateX(12px);
+  transition: all 0.3s ease-out;
+}
+
+.light-theme-toggle {
+  transform: translateX(-12px);
+  transition: all 0.3s ease-out;
+}
