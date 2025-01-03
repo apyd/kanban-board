@@ -1,4 +1,4 @@
-import ThemeToggle from "@components/ThemeToggle/ThemeToggle";
+import BoardsList from "@components/BoardsList/BoardsList";
 import { initLocalTheme } from "@utils/initLocalTheme";
 
 initLocalTheme();
@@ -6,7 +6,7 @@ initLocalTheme();
 function App() {
   return (
     <div className="App">
-      <ThemeToggle />
+      <BoardsList />
     </div>
   );
 }
