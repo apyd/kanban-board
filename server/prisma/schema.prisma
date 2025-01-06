@@ -8,7 +8,7 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
+  id        String   @id @default(uuid())
   email     String   @unique
   name      String?
   password  String
@@ -19,7 +19,6 @@ model User {
   ownedBoards    Board[] @relation("BoardOwner")
   memberOfBoards Board[] @relation("BoardMembers")
   assignedTasks  Task[]  @relation("TaskAssignes")
-  Task           Task[]
 }
 
 model Board {
@@ -33,60 +32,62 @@ model Board {
   owner   User     @relation("BoardOwner", fields: [ownerId], references: [id])
   ownerId String
   members User[]   @relation("BoardMembers")
-  columns Column[]
-  tasks   Task[]
+  columns Column[] @relation("BoardColumns")
+  tasks   Task[]   @relation("BoardTasks")
 }
 
 model Column {
   id        String   @id @default(cuid())
   title     String
-  order     Float
+  order     Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   // Relations
-  board   Board  @relation(fields: [boardId], references: [id])
+  board   Board  @relation("BoardColumns", fields: [boardId], references: [id], onDelete: Cascade)
   boardId String
-  tasks   Task[]
+  tasks   Task[] @relation("ColumnTasks")
 }
 
 model Task {
   id          String   @id @default(cuid())
   title       String
   description String?
-  order       Float
+  order       Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  archived    Boolean  @default(false)
 
-  // Relations - todo
+  // Relations 
   User       User?     @relation("TaskAssignes", fields: [userId], references: [id])
   userId     String?
-  Board      Board?    @relation(fields: [boardId], references: [id])
-  boardId    String?
-  Column     Column?   @relation(fields: [columnId], references: [id])
-  columnId   String?
+  Board      Board     @relation("BoardTasks", fields: [boardId], references: [id], onDelete: Cascade)
+  boardId    String
+  Column     Column    @relation("ColumnTasks", fields: [columnId], references: [id], onDelete: Cascade)
+  columnId   String
   Priority   Priority? @relation(fields: [priorityId], references: [id])
   priorityId String?
-  Labels     Label[]   @relation(fields: [labelId], references: [id])
-  labelId    String?
-  User       User?     @relation(fields: [userId], references: [id])
+  Label      Label[]   @relation("TaskLabels")
 }
 
 model Priority {
   id        String   @id @default(cuid())
-  name      String
+  name      String   @unique
   color     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Task      Task[]
+
+  // Relations
+  Task Task[]
 }
 
 model Label {
   id        String   @id @default(cuid())
-  name      String
+  name      String   @unique
   color     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Task      Task?    @relation(fields: [taskId], references: [id])
-  taskId    String?
+
+  // Relations
+  Task Task[] @relation("TaskLabels")
 }
