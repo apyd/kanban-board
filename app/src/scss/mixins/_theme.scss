@@ -1,0 +1,44 @@
+@use "../variables/colors" as *;
+
+@mixin light-theme {
+  //bg
+  --c-bg: #{$c-white};
+  --c-bg-2: #{$c-grey-200};
+  --c-bg-3: #{$c-grey-100};
+  --c-bg-4: #{$c-light-purple};
+
+  //typography
+  --c-typo-1: #{$c-grey-300};
+  --c-typo-2: #{$c-grey-600};
+  --c-typo-3: #{$c-white};
+
+  //colors used across
+  --c-white: #{$c-white};
+  --c-red: #{$c-red};
+  --c-purple: #{$c-purple};
+}
+
+@mixin dark-theme {
+  //bg
+  --c-bg: #{$c-grey-400};
+  --c-bg-2: #{$c-grey-500};
+  --c-bg-3: #{$c-white};
+
+  //typography
+  --c-typo-1: #{$c-grey-300};
+  --c-typo-2: #{$c-white};
+  --c-typo-3: #{$c-white};
+
+  //colors used across
+  --c-white: #{$c-white};
+  --c-red: #{$c-red};
+  --c-purple: #{$c-purple};
+}
+
+:root {
+  @include light-theme();
+}
+
+[data-theme="dark"] {
+  @include dark-theme();
+}
