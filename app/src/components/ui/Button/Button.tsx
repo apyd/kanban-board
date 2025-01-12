@@ -5,20 +5,20 @@ const Button = ({
   label,
   Icon,
   current = false,
-  staticBtn = false,
+  withStaticStyles = false,
   variant = "primary",
   rounded = "full-rounded",
   onClick,
   as: Component = "button",
-  href,
+  ...rest
 }: ButtonProps) => {
   return (
     <Component
       className={`button button-${variant} button-${rounded} ${
         current && "button-active"
-      } ${staticBtn && "button-static"}`}
+      } ${withStaticStyles && "button-static"}`}
       onClick={onClick}
-      href={href}
+      {...rest}
     >
       {Icon && <span className="button-icon">{Icon}</span>}
       <span className="button-label">{label}</span>

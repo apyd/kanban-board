@@ -1,6 +1,6 @@
 export type ButtonProps = {
   current?: boolean;
-  staticBtn?: boolean;
+  withStaticStyles?: boolean;
   label?: string;
   disabled?: boolean;
   variant?: "primary" | "secondary" | "destructive";

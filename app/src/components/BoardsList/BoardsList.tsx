@@ -52,7 +52,7 @@ const BoardsList = () => {
         variant="primary"
         rounded="right-rounded"
         label="Create New Board"
-        staticBtn
+        withStaticStyles
         Icon={<PlusIcon className="plus-icon" />}
         onClick={handleAddBoard}
       ></Button>
@@ -61,5 +61,3 @@ const BoardsList = () => {
 };
 
 export default BoardsList;
-
-//wstawuic komponent button zamiast diva w li
