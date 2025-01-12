@@ -1,4 +1,4 @@
-@use "../../../scss/mixins/typography" as f;
+@use "@scss/mixins/typography" as f;
 
 .button {
   width: 100%;
@@ -13,7 +13,6 @@
   @include f.font-article-regular();
   color: var(--c-typo-1);
   background-color: var(--c-white);
-  @include f.font-article-regular();
 
   &.button-active {
     background-color: var(--c-purple);
