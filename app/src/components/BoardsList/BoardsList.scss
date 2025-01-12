@@ -1,83 +1,38 @@
+@use "../../scss/mixins/typography" as f;
+
+.active-board {
+  background-color: var(--c-purple);
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
 .boards {
   min-width: 260px;
   width: 20%;
-  padding: 10px;
-  background-color: var(--c-white);
-  color: var(--c-typo-1);
+  padding: 0.8rem;
 }
 
 .boards-header {
   padding: 10px;
 }
 .boards-heading {
-  font-size: 12px;
-  padding-bottom: 10px;
+  @include f.font-heading2-regular();
 }
 
 .boards-list {
   display: flex;
   flex-direction: column;
 }
-.board {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 10px;
-  background-color: var(--c-white);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  cursor: pointer;
-}
 
-.board:hover {
-  background-color: var(--c-bg-3);
-  color: var(--c-purple);
-}
-
-.active-board {
-  background-color: var(--c-bg-4);
-  color: var(--c-typo-3);
-}
-
-.board-title {
-  font-size: 12px;
-  font-weight: bold;
-}
 .board-icon {
   color: var(--c-typo-1);
 }
 
-.plus-icon,
-.static-board-icon,
-.board-button-text {
+.plus-icon {
   color: var(--c-purple);
-}
-
-.add-board-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: var(--c-white);
-  padding: 10px;
-  margin-top: 0.5rem;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  cursor: pointer;
-}
-
-.add-board-button:hover {
-  background-color: var(--c-bg-3);
 }
 
 .board-button-content {
   display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  padding-right: 10px;
-}
-
-.board-button-text {
-  font-size: 12px;
-  font-weight: bold;
+  padding-right: 0.8rem;
 }

@@ -1,19 +1,13 @@
 import { useState } from "react";
+import { BoardItem } from "./BoardsList.types";
 import "@components/BoardsList/BoardsList.scss";
 import BoardIcon from "@assets/icons/board.svg?react";
 import PlusIcon from "@assets/icons/plus.svg?react";
-
-type TaskBoard = {
-  title: string;
-  id: number;
-  todo?: string;
-  doing?: string;
-  done?: string;
-};
+import Button from "@components/ui/Button/Button";
 
 const BoardsList = () => {
-  const [boards, setBoards] = useState<TaskBoard[]>([]);
-  const [activeElement, setActiveElement] = useState<TaskBoard[]>([]);
+  const [boards, setBoards] = useState<BoardItem[]>([]);
+  const [activeElementId, setActiveElementId] = useState<number>();
 
   const handleAddBoard = () => {
     setBoards((prevBoard) => {
@@ -25,45 +19,47 @@ const BoardsList = () => {
   };
 
   const handleActiveElement = (id: number) => {
-    return setActiveElement(boards.filter((board) => board.id === id));
+    const activeElement = boards.find((board) => board.id === id);
+    setActiveElementId(activeElement?.id);
   };
-
-  const [activeBoard] = activeElement;
 
   return (
     <section className="boards">
       <header className="boards-header">
-        <h3 className="boards-heading">ALL BOARDS ({boards.length})</h3>
+        <h2 className="boards-heading">ALL BOARDS ({boards.length})</h2>
       </header>
       {boards.length > 0 && (
         <ul className="boards-list">
           {boards.map((board) => {
             return (
-              <li
-                className={`board ${
-                  activeBoard?.id === board.id ? "active-board" : ""
-                }`}
-                key={board.id}
-                onClick={() => handleActiveElement(board.id)}
-              >
-                <BoardIcon className="board-icon" />
-                <div className="board-content">
-                  <span className="board-title">{board.title}</span>
-                </div>
+              <li key={board.id}>
+                <Button
+                  variant="primary"
+                  rounded="right-rounded"
+                  label={board.title}
+                  current={activeElementId === board.id}
+                  Icon={<BoardIcon className="board-icon" />}
+                  onClick={() => handleActiveElement(board.id)}
+                  as="a"
+                  href="#"
+                ></Button>
               </li>
             );
           })}
         </ul>
       )}
-      <button className="add-board-button" onClick={handleAddBoard}>
-        <BoardIcon className="board-icon static-board-icon" />
-        <div className="board-button-content">
-          <PlusIcon className="plus-icon" />
-          <span className="board-button-text">Create New Board</span>
-        </div>
-      </button>
+      <Button
+        variant="primary"
+        rounded="right-rounded"
+        label="Create New Board"
+        staticBtn
+        Icon={<PlusIcon className="plus-icon" />}
+        onClick={handleAddBoard}
+      ></Button>
     </section>
   );
 };
 
 export default BoardsList;
+
+//wstawuic komponent button zamiast diva w li
