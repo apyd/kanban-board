@@ -1,0 +1,37 @@
+@use "@scss/mixins/typography" as f;
+
+.active-board {
+  background-color: var(--c-purple);
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+.boards {
+  width: 100%;
+  padding: 0.8rem;
+}
+
+.boards-header {
+  padding: 0.5rem;
+}
+.boards-heading {
+  @include f.font-heading2-regular();
+}
+
+.boards-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.board-icon {
+  color: var(--c-typo-1);
+}
+
+.plus-icon {
+  color: var(--c-purple);
+}
+
+.board-button-content {
+  display: flex;
+  padding-right: 0.8rem;
+}

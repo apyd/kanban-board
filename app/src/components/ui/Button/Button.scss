@@ -1,3 +1,44 @@
+@use "@scss/mixins/typography" as f;
+
 .button {
-  color: var(--c-red);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+
+.button-primary {
+  @include f.font-article-regular();
+  color: var(--c-typo-1);
+  background-color: var(--c-white);
+
+  &.button-active {
+    background-color: var(--c-purple);
+    color: var(--c-white);
+  }
+
+  &.button-static {
+    color: var(--c-purple);
+  }
+
+  &:hover {
+    background-color: var(--c-bg-3);
+    color: var(--c-purple);
+  }
+}
+
+.button-full-rounded {
+  border-radius: 1.5rem;
+}
+
+.button-right-rounded {
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+.button-left-rounded {
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
 }
