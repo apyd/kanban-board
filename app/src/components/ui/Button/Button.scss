@@ -22,11 +22,11 @@
   &.button-static {
     color: var(--c-purple);
   }
-}
 
-.button-primary:hover {
-  background-color: var(--c-bg-3);
-  color: var(--c-purple);
+  &:hover {
+    background-color: var(--c-bg-3);
+    color: var(--c-purple);
+  }
 }
 
 .button-full-rounded {
