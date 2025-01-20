@@ -1,4 +1,4 @@
-import BoardsList from "@components/BoardsList/BoardsList";
+import Header from "@components/Header/Header";
 import { initLocalTheme } from "@utils/initLocalTheme";
 
 initLocalTheme();
@@ -6,7 +6,7 @@ initLocalTheme();
 function App() {
   return (
     <div className="App">
-      <BoardsList />
+      <Header />
     </div>
   );
 }
