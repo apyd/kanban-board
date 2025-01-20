@@ -1,16 +1,16 @@
 @use "@scss/mixins/typography" as f;
+@use "@scss/mixins/breakpointsMix" as b;
 
 .button {
-  width: 100%;
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.8rem;
+  padding: 0.5rem;
   cursor: pointer;
 }
 
 .button-primary {
-  @include f.font-article-regular();
+  @include f.font-article-md();
   color: var(--c-typo-1);
   background-color: var(--c-white);
 
@@ -29,6 +29,29 @@
   }
 }
 
+.button-secondary {
+  background-color: var(--c-purple);
+  color: var(--c-white);
+  padding: 0.5rem;
+  @include f.font-article-xl();
+  @include b.sm() {
+    padding: 0.5rem 1.5rem;
+    border-radius: 5rem;
+  }
+}
+
+.button-ghost {
+  background-color: transparent;
+  padding: 0.5rem;
+
+  @include f.font-article-sm();
+
+  @include b.sm() {
+    @include f.font-article-sm();
+    padding: 0 1rem;
+  }
+}
+
 .button-full-rounded {
   border-radius: 1.5rem;
 }
@@ -41,4 +64,8 @@
 .button-left-rounded {
   border-top-left-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
+}
+
+.button-no-rounded {
+  border-radius: none;
 }

@@ -21,7 +21,7 @@ const Button = ({
       {...rest}
     >
       {Icon && <span className="button-icon">{Icon}</span>}
-      <span className="button-label">{label}</span>
+      {label && <span className="button-label">{label}</span>}
     </Component>
   );
 };
