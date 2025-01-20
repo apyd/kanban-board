@@ -1,9 +1,9 @@
 @mixin font-heading1-regular {
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 2rem;
+  font-weight: 600;
 }
 @mixin font-heading1-bold {
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
@@ -25,7 +25,17 @@
   font-weight: 800;
 }
 
-@mixin font-article-regular {
+@mixin font-article-sm {
   font-size: 0.8rem;
+  font-weight: 400;
+}
+
+@mixin font-article-md {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@mixin font-article-xl {
+  font-size: 1.1rem;
   font-weight: 600;
 }
