@@ -32,7 +32,7 @@ const BoardsList = () => {
         <ul className="boards-list">
           {boards.map((board) => {
             return (
-              <li key={board.id}>
+              <li key={board.id} className="boards-list-item">
                 <Button
                   variant="primary"
                   rounded="right-rounded"

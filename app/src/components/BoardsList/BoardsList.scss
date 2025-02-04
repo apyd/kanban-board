@@ -1,9 +1,15 @@
 @use "@scss/mixins/typography" as f;
+@use "@scss/mixins/theme";
 
 .active-board {
   background-color: var(--c-purple);
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
+}
+
+.active-board-name {
+  color: var(--c-typo-2);
+  @include f.font-heading3-regular();
 }
 
 .boards {
@@ -15,6 +21,7 @@
   padding: 0.5rem;
 }
 .boards-heading {
+  color: var(--c-typo-2);
   @include f.font-heading2-regular();
 }
 
