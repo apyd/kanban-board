@@ -42,3 +42,7 @@
   display: flex;
   padding-right: 0.8rem;
 }
+
+.boards-heading {
+  font-size: clamp(1rem, 0.8rem + 0.9vw, 1.2rem);
+}
