@@ -8,15 +8,18 @@ const Button = ({
   withStaticStyles = false,
   variant = "primary",
   rounded = "full-rounded",
+  buttonWithArrow = false,
   onClick,
   as: Component = "button",
   ...rest
 }: ButtonProps) => {
   return (
     <Component
-      className={`button button-${variant} button-${rounded} ${
+      className={`button button-${variant} button-${rounded}  ${
         current && "button-active"
-      } ${withStaticStyles && "button-static"}`}
+      } ${withStaticStyles && "button-static"} ${
+        buttonWithArrow && "button-dropdown"
+      }`}
       onClick={onClick}
       {...rest}
     >

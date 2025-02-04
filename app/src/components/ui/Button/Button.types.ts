@@ -6,6 +6,7 @@ export type ButtonProps = {
   variant?: "primary" | "secondary" | "destructive" | "ghost";
   Icon?: React.ReactNode;
   rounded?: "full-rounded" | "right-rounded" | "left-rounded" | "no-rounded";
+  buttonWithArrow?: boolean;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   as?: React.ElementType;
