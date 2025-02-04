@@ -1,17 +1,19 @@
 @use "@scss/mixins/typography" as t;
-@use "@scss/mixins/breakpointsMix" as b;
+@use "@scss/mixins/breakpoints" as b;
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  position: relative;
 }
 
 .logo {
   @include b.sm() {
-    width: 4rem;
+    width: 2rem;
   }
+  width: 3rem;
 }
 
 .buttons-wrapper {
@@ -20,22 +22,18 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-
-  @include b.sm() {
-    gap: 0.1rem;
-  }
 }
 
 .logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
 }
 
 .logo-heading {
   @include t.font-heading1-bold();
-  color: var(--c-purple);
+  color: var(--c-bg-5);
+  margin-top: 0.5rem;
 }
 
 .header-board-options {
@@ -46,7 +44,7 @@
   padding: 0.5rem 2rem;
   border-radius: 1rem;
 
-  @include b.sm() {
+  @include b.md() {
     top: 3rem;
     left: -3.5rem;
     padding: 1rem;
@@ -63,4 +61,18 @@
 .button-container {
   background-color: transparent;
   cursor: pointer;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active-board-name {
+  @include t.font-heading3-regular();
+}
+
+.button-icon {
+  width: 1.5rem;
 }
