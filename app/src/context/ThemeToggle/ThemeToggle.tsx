@@ -2,22 +2,25 @@ import { createContext, useState } from "react";
 import type { ThemeToggleContext } from "@context/ThemeToggle/ThemeToggle.types";
 
 const ThemeToggleContext = createContext<{
-  isLightTheme: boolean;
+  theme: string;
   toggleTheme: () => void;
 }>({
-  isLightTheme: true,
+  theme: "light",
   toggleTheme: () => {},
 });
 
 export const ThemeToggleProvider = ({ children }: ThemeToggleContext) => {
-  const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
+  const localStorageTheme = localStorage.getItem("theme") as string;
+  const [theme, setTheme] = useState<string>(localStorageTheme);
 
-  function toggleTheme() {
-    setIsLightTheme((prevValue) => !prevValue);
-  }
+  const toggleTheme = () => {
+    const updatedTheme = theme === "light" ? "dark" : "light";
+    setTheme(updatedTheme);
+    document.documentElement.setAttribute("data-theme", updatedTheme);
+  };
 
   const ThemeToggleCtx = {
-    isLightTheme,
+    theme,
     toggleTheme,
   };
 
