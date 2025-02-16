@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from "react";
+import clsx from "clsx";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
-import "./Header.scss";
 import "@components/Header/Header.scss";
 import Button from "@components/ui/Button/Button";
-import Logo from "@assets/logo4.svg?react";
+import Logo from "@assets/logo.svg?react";
 import Ellipsis from "@assets/icons/ellipsis.svg?react";
 import Plus from "@assets/icons/plus.svg?react";
 import ChevronDown from "@assets/icons/chevron.svg?react";
-import BREAKPOINTS from "@utils/Consts/breakpoints";
+import BREAKPOINTS from "@utils/consts/breakpoints";
 
 const Header = () => {
   const modalMenuCtx = useContext(ModalMenuContext);
@@ -81,7 +81,7 @@ const Header = () => {
             rounded="no-rounded"
             onClick={handleToggleButtonMenu}
           />
-          <ul className={`header-board-options ${isVisible ? "visible" : ""}`}>
+          <ul className={clsx("header-board-options", { visible: isVisible })}>
             <li>
               <Button label="Edit Board" variant="ghost"></Button>
             </li>
