@@ -8,29 +8,33 @@ import BREAKPOINTS from "@utils/Consts/breakpoints";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
 
 const Sidebar = () => {
-  const modalMenuCtx = useContext(ModalMenuContext);
-  const [isSidebarHidden, setIsSidebarHidden] = useState(false);
+  const { isModalMenuOpen, closeModalMenu } = useContext(ModalMenuContext);
 
-  const mql = window.matchMedia(`(max-width: ${BREAKPOINTS["screen-md-max"]})`);
-  const [matches, setMatches] = useState(mql.matches);
+  const mql = window.matchMedia(
+    `screen and (min-width: ${parseInt(BREAKPOINTS["screen-md-max"]) + 1}px)`
+  );
+  const [showSidebar, setShowSidebar] = useState(mql.matches);
 
   useEffect(() => {
     const handleChangeScreenSize = (event: MediaQueryListEvent) => {
-      setMatches(event.matches);
+      setShowSidebar(event.matches);
+
+      console.log(event.matches);
 
       if (!event.matches) {
-        modalMenuCtx.closeModalMenu();
+        closeModalMenu();
       }
     };
+
     mql.addEventListener("change", handleChangeScreenSize);
 
     return () => {
       mql.removeEventListener("change", handleChangeScreenSize);
     };
-  }, [mql, modalMenuCtx]);
+  }, [mql, closeModalMenu, isModalMenuOpen]);
 
   const handleToggleSidebar = () => {
-    setIsSidebarHidden((prevValue) => {
+    setShowSidebar((prevValue) => {
       return !prevValue;
     });
   };
@@ -49,8 +53,8 @@ const Sidebar = () => {
     );
   };
 
-  return !isSidebarHidden ? (
-    <div className={`sidebar-content ${matches ? "sidebar-none" : ""}`}>
+  return showSidebar ? (
+    <div className={`sidebar-content ${!showSidebar ? "sidebar-none" : ""}`}>
       <div className="sidebar-boards-list-wrapper">
         <BoardsList />
       </div>
