@@ -7,7 +7,7 @@ import Logo from "@assets/logo.svg?react";
 import Ellipsis from "@assets/icons/ellipsis.svg?react";
 import Plus from "@assets/icons/plus.svg?react";
 import ChevronDown from "@assets/icons/chevron.svg?react";
-import BREAKPOINTS from "@utils/consts/breakpoints";
+import BREAKPOINTS from "@consts/breakpoints";
 
 const Header = () => {
   const modalMenuCtx = useContext(ModalMenuContext);
