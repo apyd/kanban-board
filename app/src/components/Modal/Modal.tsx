@@ -1,8 +1,8 @@
 import { createPortal } from "react-dom";
 import { useRef, useEffect, useContext } from "react";
+import clsx from "clsx";
 import { ModalProps } from "./Modal.types";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
-
 import "./Modal.scss";
 
 const Modal = ({ children, open, portal, ...rest }: ModalProps) => {
@@ -21,7 +21,7 @@ const Modal = ({ children, open, portal, ...rest }: ModalProps) => {
     <dialog
       ref={dialogRef}
       onClick={clickHandler}
-      className={`modal ${open ? "modal--open" : ""}`}
+      className={clsx("modal", { "modal--open": open })}
       {...rest}
     >
       <div className="modal-inner">{children}</div>
