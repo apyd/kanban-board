@@ -3,8 +3,6 @@ import { initLocalTheme } from "@utils/initLocalTheme";
 import { ModalMenuProvider } from "./context/ModalMenu/ModalMenu";
 import ModalMenu from "@components/Header/ModalMenu/ModalMenu";
 
-import "./App.scss";
-
 initLocalTheme();
 
 function App() {
