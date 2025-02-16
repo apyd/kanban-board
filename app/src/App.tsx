@@ -12,9 +12,7 @@ function App() {
     <ModalMenuProvider>
       <div className="App">
         <Header />
-        <div className="modal-wrapper">
-          <ModalMenu />
-        </div>
+        <ModalMenu />
       </div>
     </ModalMenuProvider>
   );
