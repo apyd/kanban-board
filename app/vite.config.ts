@@ -15,6 +15,7 @@ export default defineConfig({
       "@scss": path.resolve(__dirname, "./src/scss"),
       "@utils": path.resolve(__dirname, "./src/utils"),
       "@context": path.resolve(__dirname, "./src/context"),
+      "@consts": path.resolve(__dirname, "./src/consts"),
     },
   },
 });
