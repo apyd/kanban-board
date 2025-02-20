@@ -5,7 +5,7 @@ import { ModalProps } from "./Modal.types";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
 import "./Modal.scss";
 
-const Modal = ({ children, open, portal, ...rest }: ModalProps) => {
+const Modal = ({ children, open, onClose, ...rest }: ModalProps) => {
   const modalMenuCtx = useContext(ModalMenuContext);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -22,6 +22,7 @@ const Modal = ({ children, open, portal, ...rest }: ModalProps) => {
       ref={dialogRef}
       onClick={clickHandler}
       className={clsx("modal", { "modal--open": open })}
+      onClose={onClose}
       {...rest}
     >
       <div className="modal-inner">{children}</div>
@@ -38,9 +39,7 @@ const Modal = ({ children, open, portal, ...rest }: ModalProps) => {
     return () => modal?.close();
   }, [open]);
 
-  return portal
-    ? createPortal(renderModal(), document.getElementById("modal")!)
-    : renderModal();
+  return createPortal(renderModal(), document.getElementById("modal")!);
 };
 
 export default Modal;
