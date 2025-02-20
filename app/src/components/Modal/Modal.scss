@@ -1,0 +1,22 @@
+@use "@scss/variables/colors" as v;
+
+.modal {
+  display: none;
+}
+
+.modal--open {
+  position: fixed;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: calc(100vh - 210px);
+  width: 50%;
+  min-width: 320px;
+  max-width: 468px;
+  padding: 1rem;
+  background-color: var(--c-bg);
+  border-radius: 5px;
+  box-shadow: 0 0 0.2rem v.$c-light-purple;
+  overflow-y: auto;
+}

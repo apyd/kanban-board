@@ -1,7 +1,7 @@
-@use "@scss/variables" as v;
+@use "@scss/variables/colors" as v;
 
 .toggle-wrapper {
-  max-width: 250px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,10 @@
 }
 
 .toggle-theme {
-  width: 60%;
+  width: 40%;
+  min-width: 50px;
+  max-width: 60px;
+
   padding: 12px;
   background-color: var(--c-purple);
   border-radius: 50px;
@@ -28,7 +31,7 @@
 }
 
 .toggle-theme:hover {
-  background-color: var(--c-bg-4);
+  background-color: v.$c-light-purple;
 }
 
 .toggle {

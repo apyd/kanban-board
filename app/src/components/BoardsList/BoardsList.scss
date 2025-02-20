@@ -6,6 +6,11 @@
   border-bottom-right-radius: 1.5rem;
 }
 
+.active-board-name {
+  color: var(--c-typo-2);
+  @include f.font-heading3-regular();
+}
+
 .boards {
   width: 100%;
   padding: 0.8rem;
@@ -15,6 +20,7 @@
   padding: 0.5rem;
 }
 .boards-heading {
+  color: var(--c-typo-2);
   @include f.font-heading2-regular();
 }
 

@@ -12,7 +12,9 @@
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@scss/*": ["src/scss/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@context/*": ["src/context/*"],
+      "@consts/*": ["src/consts/*"]
     },
 
     /* Bundler mode */

@@ -1,0 +1,80 @@
+@use "@scss/mixins/typography" as t;
+@use "@scss/mixins/breakpoints" as b;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.logo {
+  @include b.sm() {
+    width: 2rem;
+  }
+  & {
+    width: 3rem;
+  }
+}
+
+.buttons-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-heading {
+  @include t.font-heading1-bold();
+  color: var(--c-bg-4);
+  margin-top: 0.5rem;
+}
+
+.header-board-options {
+  display: none;
+  position: absolute;
+  top: 3rem;
+  left: 0.5rem;
+  padding: 0.5rem 2rem;
+  border-radius: 1rem;
+
+  @include b.md() {
+    top: 3rem;
+    left: -3.5rem;
+    padding: 1rem;
+    @include t.font-article-sm();
+  }
+}
+.visible {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0.5rem 0.5rem var(--c-bg-3);
+}
+
+.button-container {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active-board-name {
+  @include t.font-heading3-regular();
+}
+
+.button-icon {
+  width: 1.5rem;
+}
