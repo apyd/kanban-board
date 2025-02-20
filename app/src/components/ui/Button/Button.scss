@@ -1,5 +1,6 @@
 @use "@scss/mixins/typography" as f;
 @use "@scss/mixins/breakpoints" as b;
+@use "@scss/variables/colors" as c;
 
 .button {
   display: flex;
@@ -27,7 +28,7 @@
   }
 
   &:hover {
-    background-color: var(--c-bg-4);
+    background-color: c.$c-light-purple;
     color: var(--c-white);
   }
 }

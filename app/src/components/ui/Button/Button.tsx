@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ButtonProps } from "./Button.types";
 import "./Button.scss";
 
@@ -15,11 +16,14 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <Component
-      className={`button button-${variant} button-${rounded}  ${
-        current && "button-active"
-      } ${withStaticStyles && "button-static"} ${
-        buttonWithArrow && "button-dropdown"
-      }`}
+      className={clsx(
+        "button",
+        `button-${variant}`,
+        `button-${rounded}`,
+        { "button-active": current },
+        { "button-static": withStaticStyles },
+        { "button-dropdown": buttonWithArrow }
+      )}
       onClick={onClick}
       {...rest}
     >

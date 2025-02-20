@@ -1,18 +1,14 @@
 import { createPortal } from "react-dom";
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect } from "react";
+import clsx from "clsx";
 import { ModalProps } from "./Modal.types";
-import ModalMenuContext from "@context/ModalMenu/ModalMenu";
-
 import "./Modal.scss";
 
-const Modal = ({ children, open, portal, ...rest }: ModalProps) => {
-  const modalMenuCtx = useContext(ModalMenuContext);
-
+const Modal = ({ children, open, onClose, ...rest }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const clickHandler = (e: any) => {
+  const clickHandler = (e: React.MouseEvent<HTMLDialogElement, MouseEvent>) => {
     if (e.target === e.currentTarget) {
-      modalMenuCtx.closeModalMenu();
       dialogRef.current?.close();
     }
   };
@@ -21,7 +17,8 @@ const Modal = ({ children, open, portal, ...rest }: ModalProps) => {
     <dialog
       ref={dialogRef}
       onClick={clickHandler}
-      className={`modal ${open ? "modal--open" : ""}`}
+      className={clsx("modal", { "modal--open": open })}
+      onClose={onClose}
       {...rest}
     >
       <div className="modal-inner">{children}</div>
@@ -38,9 +35,7 @@ const Modal = ({ children, open, portal, ...rest }: ModalProps) => {
     return () => modal?.close();
   }, [open]);
 
-  return portal
-    ? createPortal(renderModal(), document.getElementById("modal")!)
-    : renderModal();
+  return createPortal(renderModal(), document.getElementById("modal")!);
 };
 
 export default Modal;

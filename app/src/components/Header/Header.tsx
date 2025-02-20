@@ -1,53 +1,48 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext, useCallback } from "react";
+import clsx from "clsx";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
-import "./Header.scss";
 import "@components/Header/Header.scss";
 import Button from "@components/ui/Button/Button";
-import Logo from "@assets/logo4.svg?react";
+import Logo from "@assets/logo.svg?react";
 import Ellipsis from "@assets/icons/ellipsis.svg?react";
 import Plus from "@assets/icons/plus.svg?react";
 import ChevronDown from "@assets/icons/chevron.svg?react";
-import BREAKPOINTS from "@utils/Consts/breakpoints";
+import BREAKPOINTS from "@consts/breakpoints";
+import useMediaQuery from "@hooks/useMediaQuery";
 
 const Header = () => {
-  const modalMenuCtx = useContext(ModalMenuContext);
+  const { isModalMenuOpen, closeModalMenu, openModalMenu } =
+    useContext(ModalMenuContext);
 
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isButtonDropdownVisible, setIsButtonDropdownVisible] =
+    useState<boolean>(false);
 
-  const mql = window.matchMedia(`(max-width: ${BREAKPOINTS["screen-md-max"]})`);
-  const [matches, setMatches] = useState(mql.matches);
-
-  useEffect(() => {
-    const handleChangeScreenSize = (event: MediaQueryListEvent) => {
-      setMatches(event.matches);
-
-      if (!event.matches) {
-        modalMenuCtx.closeModalMenu();
+  const handleScreenChange = useCallback(
+    (matches: boolean) => {
+      if (!matches && isModalMenuOpen) {
+        closeModalMenu();
       }
-    };
-    mql.addEventListener("change", handleChangeScreenSize);
+    },
+    [isModalMenuOpen, closeModalMenu]
+  );
 
-    return () => {
-      mql.removeEventListener("change", handleChangeScreenSize);
-    };
-  }, [mql, modalMenuCtx]);
+  const isBelowDesktop = useMediaQuery(
+    `(max-width: ${BREAKPOINTS["screen-md-max"]})`,
+    handleScreenChange
+  );
 
   const handleToggleButtonMenu = () => {
-    if (isVisible) {
-      setIsVisible(false);
-    } else {
-      setIsVisible(true);
-    }
+    setIsButtonDropdownVisible((prevState) => !prevState);
   };
-
   const renderButton = () => {
     return <Button Icon={<Plus />} variant="secondary" />;
   };
+
   const handleToggleDropdown = () => {
-    if (modalMenuCtx.isModalMenuOpen) {
-      modalMenuCtx.closeModalMenu();
+    if (isModalMenuOpen) {
+      closeModalMenu();
     } else {
-      modalMenuCtx.openModalMenu();
+      openModalMenu();
     }
   };
 
@@ -56,8 +51,7 @@ const Header = () => {
       <header className="header">
         <div className="logo-container">
           <Logo className="logo" />
-          {!matches && <h1 className="logo-heading">kanban</h1>}
-          {matches && (
+          {isBelowDesktop ? (
             <Button
               variant="ghost"
               label="Marketing Plan"
@@ -65,23 +59,31 @@ const Header = () => {
               Icon={<ChevronDown className="chevron-icon" />}
               onClick={handleToggleDropdown}
             ></Button>
+          ) : (
+            <h1 className="logo-heading">kanban</h1>
           )}
         </div>
-        {!matches && (
+        {!isBelowDesktop && (
           <div className="header-wrapper">
             <h3 className="active-board-name">Marketing Plan</h3>
           </div>
         )}
         <div className="buttons-wrapper">
-          {!matches && <Button label="+ Add New Task" variant="secondary" />}
-          {matches && renderButton()}
+          {!isBelowDesktop && (
+            <Button label="+ Add New Task" variant="secondary" />
+          )}
+          {isBelowDesktop && renderButton()}
           <Button
             Icon={<Ellipsis />}
             variant="ghost"
             rounded="no-rounded"
             onClick={handleToggleButtonMenu}
           />
-          <ul className={`header-board-options ${isVisible ? "visible" : ""}`}>
+          <ul
+            className={clsx("header-board-options", {
+              visible: isButtonDropdownVisible,
+            })}
+          >
             <li>
               <Button label="Edit Board" variant="ghost"></Button>
             </li>

@@ -14,7 +14,9 @@
   @include b.sm() {
     width: 2rem;
   }
-  width: 3rem;
+  & {
+    width: 3rem;
+  }
 }
 
 .buttons-wrapper {
@@ -33,7 +35,7 @@
 
 .logo-heading {
   @include t.font-heading1-bold();
-  color: var(--c-bg-5);
+  color: var(--c-bg-4);
   margin-top: 0.5rem;
 }
 

@@ -16,10 +16,8 @@ function App() {
       <ModalMenuProvider>
         <div className="App">
           <Header />
-          <div className="modal-wrapper">
-            <ModalMenu />
-          </div>
           <Sidebar />
+          <ModalMenu />
         </div>
       </ModalMenuProvider>
     </ThemeToggleProvider>

@@ -13,7 +13,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@scss/*": ["src/scss/*"],
       "@utils/*": ["src/utils/*"],
-      "@context/*": ["src/context/*"]
+      "@context/*": ["src/context/*"],
+      "@consts/*": ["src/consts/*"]
     },
 
     /* Bundler mode */

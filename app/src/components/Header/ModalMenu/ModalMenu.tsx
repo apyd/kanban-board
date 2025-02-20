@@ -5,9 +5,14 @@ import BoardsList from "@components/BoardsList/BoardsList";
 import ThemeToggle from "@components/ThemeToggle/ThemeToggle";
 
 const ModalMenu = () => {
-  const ModalMenuCtx = useContext(ModalMenuContext);
+  const { isModalMenuOpen, closeModalMenu } = useContext(ModalMenuContext);
+
+  const handleCloseModal = () => {
+    closeModalMenu();
+  };
+
   return (
-    <Modal open={ModalMenuCtx.isModalMenuOpen}>
+    <Modal open={isModalMenuOpen} onClose={handleCloseModal}>
       <BoardsList />
       <ThemeToggle />
     </Modal>
