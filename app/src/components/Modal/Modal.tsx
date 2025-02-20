@@ -1,18 +1,14 @@
 import { createPortal } from "react-dom";
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect } from "react";
 import clsx from "clsx";
 import { ModalProps } from "./Modal.types";
-import ModalMenuContext from "@context/ModalMenu/ModalMenu";
 import "./Modal.scss";
 
 const Modal = ({ children, open, onClose, ...rest }: ModalProps) => {
-  const modalMenuCtx = useContext(ModalMenuContext);
-
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const clickHandler = (e: any) => {
+  const clickHandler = (e: React.MouseEvent<HTMLDialogElement, MouseEvent>) => {
     if (e.target === e.currentTarget) {
-      modalMenuCtx.closeModalMenu();
       dialogRef.current?.close();
     }
   };
