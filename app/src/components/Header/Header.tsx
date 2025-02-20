@@ -14,7 +14,8 @@ const Header = () => {
   const { isModalMenuOpen, closeModalMenu, openModalMenu } =
     useContext(ModalMenuContext);
 
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isButtonDropdownVisible, setIsButtonDropdownVisible] =
+    useState<boolean>(false);
 
   const handleScreenChange = useCallback(
     (matches: boolean) => {
@@ -31,13 +32,8 @@ const Header = () => {
   );
 
   const handleToggleButtonMenu = () => {
-    if (isVisible) {
-      setIsVisible(false);
-    } else {
-      setIsVisible(true);
-    }
+    setIsButtonDropdownVisible((prevState) => !prevState);
   };
-
   const renderButton = () => {
     return <Button Icon={<Plus />} variant="secondary" />;
   };
@@ -83,7 +79,11 @@ const Header = () => {
             rounded="no-rounded"
             onClick={handleToggleButtonMenu}
           />
-          <ul className={clsx("header-board-options", { visible: isVisible })}>
+          <ul
+            className={clsx("header-board-options", {
+              visible: isButtonDropdownVisible,
+            })}
+          >
             <li>
               <Button label="Edit Board" variant="ghost"></Button>
             </li>
