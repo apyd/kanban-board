@@ -1,40 +1,21 @@
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
+import "./Sidebar.scss";
 import ThemeToggle from "@components/ThemeToggle/ThemeToggle";
 import BoardsList from "@components/BoardsList/BoardsList";
-import "./Sidebar.scss";
 import HideIcon from "@assets/icons/hide.svg?react";
 import Button from "@components/ui/Button/Button";
-import BREAKPOINTS from "@utils/Consts/breakpoints";
-import ModalMenuContext from "@context/ModalMenu/ModalMenu";
+import BREAKPOINTS from "@consts/breakpoints";
+import useMediaQuery from "@hooks/useMediaQuery";
 
 const Sidebar = () => {
-  const { isModalMenuOpen, closeModalMenu } = useContext(ModalMenuContext);
-
-  const mql = window.matchMedia(
-    `screen and (min-width: ${parseInt(BREAKPOINTS["screen-md-max"]) + 1}px)`
+  const isBelowDesktop = useMediaQuery(
+    `(max-width: ${BREAKPOINTS["screen-md-max"]})`
   );
-  const [showSidebar, setShowSidebar] = useState(mql.matches);
 
-  useEffect(() => {
-    const handleChangeScreenSize = (event: MediaQueryListEvent) => {
-      setShowSidebar(event.matches);
-
-      console.log(event.matches);
-
-      if (!event.matches) {
-        closeModalMenu();
-      }
-    };
-
-    mql.addEventListener("change", handleChangeScreenSize);
-
-    return () => {
-      mql.removeEventListener("change", handleChangeScreenSize);
-    };
-  }, [mql, closeModalMenu, isModalMenuOpen]);
+  const [isSidebarShown, setIsSidebarShown] = useState<boolean>(true);
 
   const handleToggleSidebar = () => {
-    setShowSidebar((prevValue) => {
+    setIsSidebarShown((prevValue) => {
       return !prevValue;
     });
   };
@@ -53,8 +34,12 @@ const Sidebar = () => {
     );
   };
 
-  return showSidebar ? (
-    <div className={`sidebar-content ${!showSidebar ? "sidebar-none" : ""}`}>
+  if (isBelowDesktop) {
+    return <></>;
+  }
+
+  return isSidebarShown ? (
+    <div className="sidebar-content">
       <div className="sidebar-boards-list-wrapper">
         <BoardsList />
       </div>
