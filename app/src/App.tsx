@@ -6,8 +6,6 @@ import { ThemeToggleProvider } from "./context/ThemeToggle/ThemeToggle";
 import ModalMenu from "@components/Header/ModalMenu/ModalMenu";
 import Sidebar from "@components/Sidebar/Sidebar";
 
-import "./App.scss";
-
 initLocalTheme();
 
 function App() {
