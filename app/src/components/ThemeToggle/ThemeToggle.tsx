@@ -1,4 +1,3 @@
-// import useTheme from "@hooks/useTheme";
 import SunIcon from "@assets/icons/sun.svg?react";
 import MoonIcon from "@assets/icons/moon.svg?react";
 import "./ThemeToggle.scss";
@@ -6,7 +5,6 @@ import { useContext } from "react";
 import ThemeToggleContext from "@context/ThemeToggle/ThemeToggle";
 
 const ThemeToggle = () => {
-  // const [toggleTheme, theme] = useTheme();
   const themeToggleCtx = useContext(ThemeToggleContext);
 
   const isLightThemeActive = themeToggleCtx.theme === "light";
