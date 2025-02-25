@@ -4,7 +4,7 @@ import { ModalMenuProvider } from "@context/ModalMenu/ModalMenu";
 import { ThemeToggleProvider } from "@context/ThemeToggle/ThemeToggle";
 
 import ModalMenu from "@components/Header/ModalMenu/ModalMenu";
-import Sidebar from "@components/Sidebar/Sidebar";
+import Nav from "@components/Nav/Nav";
 
 initLocalTheme();
 
@@ -14,7 +14,7 @@ function App() {
       <ModalMenuProvider>
         <div className="App">
           <Header />
-          <Sidebar />
+          <Nav />
           <ModalMenu />
         </div>
       </ModalMenuProvider>
