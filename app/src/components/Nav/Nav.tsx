@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Sidebar.scss";
+import "./Nav.scss";
 import ThemeToggle from "@components/ThemeToggle/ThemeToggle";
 import BoardsList from "@components/BoardsList/BoardsList";
 import HideIcon from "@assets/icons/hide.svg?react";
@@ -7,59 +7,59 @@ import Button from "@components/ui/Button/Button";
 import BREAKPOINTS from "@consts/breakpoints";
 import useMediaQuery from "@hooks/useMediaQuery";
 
-const Sidebar = () => {
+const Nav = () => {
   const isBelowDesktop = useMediaQuery(
     `(max-width: ${BREAKPOINTS["screen-md-max"]})`
   );
 
-  const [isSidebarShown, setIsSidebarShown] = useState<boolean>(true);
+  const [isNavVisible, setIsNavVisible] = useState<boolean>(!isBelowDesktop);
 
-  const handleToggleSidebar = () => {
-    setIsSidebarShown((prevValue) => {
+  const handleToggleNav = () => {
+    setIsNavVisible((prevValue) => {
       return !prevValue;
     });
   };
 
-  const handleHideSidebar = () => {
+  const handleHideNav = () => {
     return (
-      <div className="sidebar-hidden">
+      <div className="nav-hidden">
         <Button
           variant="primary"
           rounded="right-rounded"
           Icon={<HideIcon className="hide-icon" />}
           withStaticStyles
-          onClick={handleToggleSidebar}
+          onClick={handleToggleNav}
         />
       </div>
     );
   };
 
   if (isBelowDesktop) {
-    return <></>;
+    return null;
   }
 
-  return isSidebarShown ? (
-    <div className="sidebar-content">
-      <div className="sidebar-boards-list-wrapper">
+  return isNavVisible ? (
+    <nav className="nav-content">
+      <div className="nav-boards-list-wrapper">
         <BoardsList />
       </div>
-      <div className="sidebar-toggle-theme-wrapper">
+      <div className="nav-toggle-theme-wrapper">
         <ThemeToggle />
       </div>
-      <div className="sidebar-toggle-wrapper">
+      <div className="nav-toggle-wrapper">
         <Button
           variant="primary"
           rounded="right-rounded"
           Icon={<HideIcon className="hide-icon" />}
           label="HIDE SIDEBAR"
           withStaticStyles
-          onClick={handleToggleSidebar}
+          onClick={handleToggleNav}
         />
       </div>
-    </div>
+    </nav>
   ) : (
-    handleHideSidebar()
+    handleHideNav()
   );
 };
 
-export default Sidebar;
+export default Nav;

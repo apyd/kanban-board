@@ -1,4 +1,4 @@
-.sidebar-content {
+.nav-content {
   display: flex;
   position: relative;
   width: 25%;
@@ -6,13 +6,13 @@
   max-height: 90vh;
 }
 
-.sidebar-boards-list-wrapper {
+.nav-boards-list-wrapper {
   max-height: 60vh;
   overflow: auto;
   width: 100%;
 }
 
-.sidebar-toggle-theme-wrapper {
+.nav-toggle-theme-wrapper {
   position: fixed;
   bottom: 5.5rem;
   padding: 0.5rem;
@@ -20,7 +20,7 @@
   max-width: 250px;
 }
 
-.sidebar-toggle-wrapper {
+.nav-toggle-wrapper {
   position: fixed;
   bottom: 1rem;
   display: flex;
@@ -30,14 +30,10 @@
   max-width: 250px;
 }
 
-.sidebar-hidden {
+.nav-hidden {
   position: fixed;
   bottom: 1rem;
   padding: 0.5rem;
   width: 10%;
   max-width: 60px;
-}
-
-.sidebar-none {
-  display: none;
 }
