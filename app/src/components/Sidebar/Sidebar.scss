@@ -1,0 +1,49 @@
+.sidebar-content {
+  display: flex;
+  position: relative;
+  width: 25%;
+  max-width: 250px;
+  max-height: 90vh;
+
+  .sidebar-toggle-wrapper {
+    position: fixed;
+    bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    width: 25%;
+    max-width: 250px;
+  }
+}
+
+.sidebar-boards-list-wrapper {
+  max-height: 60vh;
+  overflow: auto;
+  width: 100%;
+}
+
+.sidebar-toggle-theme-wrapper {
+  position: fixed;
+  bottom: 5.5rem;
+  padding: 0.5rem;
+  width: 25%;
+  max-width: 250px;
+}
+
+.sidebar-toggle-wrapper {
+  position: fixed;
+  bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  width: 6%;
+  max-width: 250px;
+}
+
+.sidebar-hidden-button-wrapper {
+  position: fixed;
+  bottom: 1rem;
+  padding: 0.5rem;
+  width: 10%;
+  max-width: 60px;
+}
