@@ -41,7 +41,7 @@ const Sidebar = () => {
         </div>
       </div>
     ) : (
-      <div className="sidebar-hidden-button-wrapper">
+      <div className="sidebar-toggle-wrapper">
         <Button
           variant="primary"
           rounded="right-rounded"
@@ -53,7 +53,7 @@ const Sidebar = () => {
     );
   };
 
-  return !isBelowDesktop && renderSidebar(isSidebarVisible);
+  return !isBelowDesktop ? renderSidebar(isSidebarVisible) : null;
 };
 
 export default Sidebar;
