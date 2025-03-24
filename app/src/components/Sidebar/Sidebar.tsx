@@ -3,7 +3,7 @@ import styles from "./Sidebar.module.scss";
 import ThemeToggle from "@components/ThemeToggle/ThemeToggle";
 import BoardsList from "@components/BoardsList/BoardsList";
 import HideIcon from "@assets/icons/hide.svg?react";
-import Button from "@components/ui/Button/Button";
+import Button from "@components/ui/Button/Button/Button";
 import BREAKPOINTS from "@consts/breakpoints";
 import useMediaQuery from "@hooks/useMediaQuery";
 
