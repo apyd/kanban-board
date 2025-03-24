@@ -1,0 +1,14 @@
+@use "@scss/variables/colors" as c;
+
+.board-column {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.board-columns-title {
+  color: c.$c-grey-300;
+  font-size: 1rem;
+}

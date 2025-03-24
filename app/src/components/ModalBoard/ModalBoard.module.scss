@@ -1,0 +1,28 @@
+@use "@scss/variables/colors" as c;
+@use "@scss/mixins/typography" as f;
+
+.board-modal-header {
+  padding-bottom: 0.1rem;
+}
+
+.board-modal-title {
+  @include f.font-heading1-bold;
+  color: c.$c-purple;
+}
+.buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.input-error {
+  display: flex;
+  justify-content: end;
+
+  .input-error-message {
+    color: c.$c-red;
+    font-size: 0.8rem;
+    padding: 0.1rem 0 0.5rem 0;
+  }
+}
