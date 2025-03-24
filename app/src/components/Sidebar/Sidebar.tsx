@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Sidebar.scss";
+import styles from "./Sidebar.module.scss";
 import ThemeToggle from "@components/ThemeToggle/ThemeToggle";
 import BoardsList from "@components/BoardsList/BoardsList";
 import HideIcon from "@assets/icons/hide.svg?react";
@@ -22,14 +22,14 @@ const Sidebar = () => {
 
   const renderSidebar = (isSidebarVisible: boolean) => {
     return isSidebarVisible ? (
-      <div className="sidebar-content">
-        <div className="sidebar-boards-list-wrapper">
+      <div className={styles["sidebar-content"]}>
+        <div className={styles["sidebar-boards-list-wrapper"]}>
           <BoardsList />
         </div>
-        <div className="sidebar-toggle-theme-wrapper">
+        <div className={styles["sidebar-toggle-theme-wrapper"]}>
           <ThemeToggle />
         </div>
-        <div className="sidebar-toggle-wrapper">
+        <div className={styles["sidebar-toggle-wrapper"]}>
           <Button
             variant="primary"
             rounded="right-rounded"
@@ -41,11 +41,11 @@ const Sidebar = () => {
         </div>
       </div>
     ) : (
-      <div className="sidebar-toggle-wrapper">
+      <div className={styles["sidebar-toggle-wrapper"]}>
         <Button
           variant="primary"
           rounded="right-rounded"
-          Icon={<HideIcon className="hide-icon" />}
+          Icon={<HideIcon className={styles["hide-icon"]} />}
           withStaticStyles
           onClick={handleToggleSidebar}
         />

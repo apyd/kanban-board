@@ -1,7 +1,7 @@
 import { useState, useContext, useCallback } from "react";
 import clsx from "clsx";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
-import "@components/Header/Header.scss";
+import styles from "@components/Header/Header.module.scss";
 import Button from "@components/ui/Button/Button";
 import Logo from "@assets/logo.svg?react";
 import Ellipsis from "@assets/icons/ellipsis.svg?react";
@@ -48,27 +48,27 @@ const Header = () => {
 
   return (
     <>
-      <header className="header">
-        <div className="logo-container">
-          <Logo className="logo" />
+      <header className={styles["header"]}>
+        <div className={styles["logo-container"]}>
+          <Logo className={styles["logo"]} />
           {isBelowDesktop ? (
             <Button
               variant="ghost"
               label="Marketing Plan"
               buttonWithArrow
-              Icon={<ChevronDown className="chevron-icon" />}
+              Icon={<ChevronDown className={styles["chevron-icon"]} />}
               onClick={handleToggleDropdown}
             ></Button>
           ) : (
-            <h1 className="logo-heading">kanban</h1>
+            <h1 className={styles["logo-heading"]}>kanban</h1>
           )}
         </div>
         {!isBelowDesktop && (
-          <div className="header-wrapper">
-            <h3 className="active-board-name">Marketing Plan</h3>
+          <div className={styles["header-wrapper"]}>
+            <h3 className={styles["active-board-name"]}>Marketing Plan</h3>
           </div>
         )}
-        <div className="buttons-wrapper">
+        <div className={styles["buttons-wrapper"]}>
           {!isBelowDesktop && (
             <Button label="+ Add New Task" variant="secondary" />
           )}
@@ -80,8 +80,8 @@ const Header = () => {
             onClick={handleToggleButtonMenu}
           />
           <ul
-            className={clsx("header-board-options", {
-              visible: isButtonDropdownVisible,
+            className={clsx(styles["header-board-options"], {
+              [styles["visible"]]: isButtonDropdownVisible,
             })}
           >
             <li>
