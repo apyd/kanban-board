@@ -2,7 +2,7 @@ import { useState, useContext, useCallback } from "react";
 import clsx from "clsx";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
 import styles from "@components/Header/Header.module.scss";
-import Button from "@components/ui/Button/Button";
+import Button from "@components/ui/Button/Button/Button";
 import Logo from "@assets/logo.svg?react";
 import Ellipsis from "@assets/icons/ellipsis.svg?react";
 import Plus from "@assets/icons/plus.svg?react";

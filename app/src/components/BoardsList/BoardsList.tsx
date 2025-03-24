@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import styles from "@components/BoardsList/BoardsList.module.scss";
 import BoardIcon from "@assets/icons/board.svg?react";
 import PlusIcon from "@assets/icons/plus.svg?react";
-import Button from "@components/ui/Button/Button";
+import Button from "@components/ui/Button/Button/Button";
 import BoardModalContext from "@context/BoardModal/BoardModal";
 import BoardsContentContext from "@context/BoardsContent/BoardsContent";
 
