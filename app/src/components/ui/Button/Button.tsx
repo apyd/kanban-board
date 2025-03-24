@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { ButtonProps } from "./Button.types";
-import "./Button.scss";
+import styles from "./Button.module.scss";
 
 const Button = ({
   label,
@@ -10,6 +10,7 @@ const Button = ({
   variant = "primary",
   rounded = "full-rounded",
   buttonWithArrow = false,
+  buttonCentered = false,
   onClick,
   as: Component = "button",
   ...rest
@@ -17,18 +18,19 @@ const Button = ({
   return (
     <Component
       className={clsx(
-        "button",
-        `button-${variant}`,
-        `button-${rounded}`,
-        { "button-active": current },
-        { "button-static": withStaticStyles },
-        { "button-dropdown": buttonWithArrow }
+        styles["button"],
+        styles[`button-${variant}`],
+        styles[`button-${rounded}`],
+        { [styles["button-active"]]: current },
+        { [styles["button-static"]]: withStaticStyles },
+        { [styles["button-dropdown"]]: buttonWithArrow },
+        { [styles["button-centered"]]: buttonCentered }
       )}
       onClick={onClick}
       {...rest}
     >
-      {Icon && <span className="button-icon">{Icon}</span>}
-      {label && <span className="button-label">{label}</span>}
+      {Icon && <span className={styles["button-icon"]}>{Icon}</span>}
+      {label && <span className={styles["button-label"]}>{label}</span>}
     </Component>
   );
 };

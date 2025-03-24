@@ -7,8 +7,10 @@ export type ButtonProps = {
   Icon?: React.ReactNode;
   rounded?: "full-rounded" | "right-rounded" | "left-rounded" | "no-rounded";
   buttonWithArrow?: boolean;
+  buttonCentered?: boolean;
   type?: "button" | "submit" | "reset";
-  onClick?: () => void;
+  onClick?: (e: Event) => void;
   as?: React.ElementType;
   href?: string;
+  form?: string;
 };
