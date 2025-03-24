@@ -2,7 +2,7 @@ import { useState, useContext, useRef, FormEvent, ChangeEvent } from "react";
 import BoardsContentContext from "@context/BoardsContent/BoardsContent";
 import BoardModalContext from "@context/BoardModal/BoardModal";
 import Modal from "@components/Modal/Modal";
-import Input from "@components/ui/Button/Input/Input";
+import Input from "@components/ui/Input/Input";
 import Button from "@components/ui/Button/Button/Button";
 import styles from "./ModalBoard.module.scss";
 import ModalBoardsList from "./ModalBoardsList/ModalBoardsList";

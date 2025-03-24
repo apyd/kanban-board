@@ -3,7 +3,7 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import Input from "@components/ui/Button/Input/Input";
+import Input from "@components/ui/Input/Input";
 import type { BoardsListProps } from "./ModalBoardsList.types";
 import Cross from "@assets/icons/cross.svg?react";
 import styles from "./ModalBoardsList.module.scss";
