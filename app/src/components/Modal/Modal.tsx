@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { useRef, useEffect } from "react";
 import clsx from "clsx";
 import { ModalProps } from "./Modal.types";
-import "./Modal.scss";
+import styles from "./Modal.module.scss";
 
 const Modal = ({ children, open, onClose, ...rest }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -12,18 +12,6 @@ const Modal = ({ children, open, onClose, ...rest }: ModalProps) => {
       dialogRef.current?.close();
     }
   };
-
-  const renderModal = () => (
-    <dialog
-      ref={dialogRef}
-      onClick={clickHandler}
-      className={clsx("modal", { "modal--open": open })}
-      onClose={onClose}
-      {...rest}
-    >
-      <div className="modal-inner">{children}</div>
-    </dialog>
-  );
 
   useEffect(() => {
     const modal = dialogRef.current;
@@ -35,6 +23,17 @@ const Modal = ({ children, open, onClose, ...rest }: ModalProps) => {
     return () => modal?.close();
   }, [open]);
 
+  const renderModal = () => (
+    <dialog
+      ref={dialogRef}
+      onClick={clickHandler}
+      className={clsx(styles["modal"], { [styles["modal--open"]]: open })}
+      onClose={onClose}
+      {...rest}
+    >
+      <div className={styles["modal-inner"]}>{children}</div>
+    </dialog>
+  );
   return createPortal(renderModal(), document.getElementById("modal")!);
 };
 
