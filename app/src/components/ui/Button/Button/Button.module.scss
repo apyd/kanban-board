@@ -14,8 +14,6 @@
   @include f.font-article-md();
   color: var(--c-typo-1);
   background-color: var(--c-bg);
-  font-size: clamp(0.8rem, 0.5rem + 0.89vw, 1rem);
-
   &.button-active {
     background-color: var(--c-purple);
     color: var(--c-white);
@@ -25,6 +23,15 @@
     width: 100%;
     color: var(--c-purple);
     background-color: var(--c-bg);
+  }
+  &.button-centered {
+    justify-content: center;
+    background-color: var(--c-purple);
+    color: var(--c-white);
+
+    &:hover {
+      background-color: c.$c-light-purple;
+    }
   }
 
   &:hover {

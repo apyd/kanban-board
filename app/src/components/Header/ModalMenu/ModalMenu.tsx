@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
-import Modal from "@components/Modal/Modal";
+import Modal from "@components/ui/Modal/Modal";
 import BoardsList from "@components/BoardsList/BoardsList";
 import ThemeToggle from "@components/ThemeToggle/ThemeToggle";
 

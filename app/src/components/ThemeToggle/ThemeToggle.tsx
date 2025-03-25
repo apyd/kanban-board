@@ -1,6 +1,6 @@
 import SunIcon from "@assets/icons/sun.svg?react";
 import MoonIcon from "@assets/icons/moon.svg?react";
-import "./ThemeToggle.scss";
+import styles from "./ThemeToggle.module.scss";
 import { useContext } from "react";
 import ThemeToggleContext from "@context/ThemeToggle/ThemeToggle";
 
@@ -11,22 +11,24 @@ const ThemeToggle = () => {
 
   return (
     <div
-      className="toggle-wrapper"
+      className={styles["toggle-wrapper"]}
       data-theme={isLightThemeActive ? "light" : "dark"}
     >
-      <SunIcon className="theme-icon" />
+      <SunIcon className={styles["theme-icon"]} />
       <button
-        className="toggle-theme-button"
+        className={styles["toggle-theme-button"]}
         onClick={themeToggleCtx.toggleTheme}
       >
-        <div className="toggle-theme"></div>
+        <div className={styles["toggle-theme"]}></div>
         <div
-          className={`${
-            isLightThemeActive ? "light-theme-toggle" : "dark-theme-toggle"
-          } toggle`}
+          className={`${styles["toggle"]} ${
+            isLightThemeActive
+              ? styles["light-theme-toggle"]
+              : styles["dark-theme-toggle"]
+          } `}
         ></div>
       </button>
-      <MoonIcon className="theme-icon" />
+      <MoonIcon className={styles["theme-icon"]} />
     </div>
   );
 };

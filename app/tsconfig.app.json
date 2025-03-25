@@ -14,7 +14,8 @@
       "@scss/*": ["src/scss/*"],
       "@utils/*": ["src/utils/*"],
       "@context/*": ["src/context/*"],
-      "@consts/*": ["src/consts/*"]
+      "@consts/*": ["src/consts/*"],
+      "@shared/*": ["src/shared/*"]
     },
 
     /* Bundler mode */
