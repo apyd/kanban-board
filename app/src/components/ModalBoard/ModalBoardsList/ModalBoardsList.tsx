@@ -3,6 +3,7 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import { restrictToParentElement } from "@dnd-kit/modifiers";
 import Input from "@components/ui/Input/Input";
 import type { BoardsListProps } from "./ModalBoardsList.types";
 import Cross from "@assets/icons/cross.svg?react";
@@ -22,6 +23,7 @@ const ModalBoardsList = ({
     <DndContext
       onDragEnd={handleReorderColumns}
       collisionDetection={closestCenter}
+      modifiers={[restrictToParentElement]}
     >
       <form
         className={styles["board-columns-form"]}
