@@ -9,6 +9,7 @@ const Input = ({
   placeholder,
   value,
   ref,
+
   onChange,
 }: Input) => {
   return (
