@@ -1,0 +1,28 @@
+@use "@scss/variables/colors" as c;
+
+.heading {
+  padding-bottom: 1rem;
+}
+
+.task-item {
+  display: flex;
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0 1rem 0;
+}
+
+.select-status {
+  border: 2px solid c.$c-grey-100;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+.label {
+  color: c.$c-grey-300;
+}
