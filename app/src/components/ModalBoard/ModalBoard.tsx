@@ -9,7 +9,6 @@ import ModalBoardsList from "./ModalBoardsList/ModalBoardsList";
 import { arrayMove } from "@dnd-kit/sortable";
 import { v4 as uuidv4 } from "uuid";
 import { DragEndEvent } from "@dnd-kit/core/dist/types/events";
-// POPRAW SCIEZKE na alias @shared
 import { Column } from "@shared/types";
 
 const ModalBoard = () => {
