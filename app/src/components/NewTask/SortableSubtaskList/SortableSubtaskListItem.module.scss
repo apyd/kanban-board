@@ -1,0 +1,10 @@
+@use "@scss/variables/colors" as *;
+
+.item-content {
+  display: flex;
+  flex: 1;
+}
+.drag-handle {
+  color: $c-grey-300;
+  margin-bottom: 0.5rem;
+}
