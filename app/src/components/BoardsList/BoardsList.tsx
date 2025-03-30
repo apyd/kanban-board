@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import styles from "@components/BoardsList/BoardsList.module.scss";
 import BoardIcon from "@assets/icons/board.svg?react";
 import PlusIcon from "@assets/icons/plus.svg?react";
@@ -7,14 +7,18 @@ import BoardModalContext from "@context/BoardModal/BoardModal";
 import BoardsContentContext from "@context/BoardsContent/BoardsContent";
 
 const BoardsList = () => {
-  const { boardsContent: boards } = useContext(BoardsContentContext);
+  const {
+    boardsContent: boards,
+    activeBoardId,
+    handleActiveBoard,
+  } = useContext(BoardsContentContext);
   const { openBoardModal } = useContext(BoardModalContext);
-  const [activeElementId, setActiveElementId] = useState<string>();
+  // const [activeElementId, setActiveElementId] = useState<string>();
 
-  const handleActiveElement = (boardId: string) => {
-    const activeElement = boards.find((board) => board.boardId === boardId);
-    setActiveElementId(activeElement?.boardId);
-  };
+  // const handleActiveElement = (boardId: string) => {
+  //   const activeElement = boards.find((board) => board.boardId === boardId);
+  //   setActiveElementId(activeElement?.boardId);
+  // };
 
   return (
     <section className={styles["boards"]}>
@@ -32,9 +36,9 @@ const BoardsList = () => {
                   variant="primary"
                   rounded="right-rounded"
                   label={board.boardTitle}
-                  current={activeElementId === board.boardId}
+                  current={activeBoardId === board.boardId}
                   Icon={<BoardIcon className={styles["board-icon"]} />}
-                  onClick={() => handleActiveElement(board.boardId)}
+                  onClick={() => handleActiveBoard(board.boardId)}
                   as="a"
                   href="#"
                 ></Button>
