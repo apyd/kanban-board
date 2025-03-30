@@ -1,6 +1,8 @@
 import { useState, useContext, useCallback } from "react";
 import clsx from "clsx";
 import ModalMenuContext from "@context/ModalMenu/ModalMenu";
+import TaskModalContext from "@context/TaskModal/TaskModal";
+import BoardsContentContext from "@context/BoardsContent/BoardsContent";
 import styles from "@components/Header/Header.module.scss";
 import Button from "@components/ui/Button/Button/Button";
 import Logo from "@assets/logo.svg?react";
@@ -13,6 +15,8 @@ import useMediaQuery from "@hooks/useMediaQuery";
 const Header = () => {
   const { isModalMenuOpen, closeModalMenu, openModalMenu } =
     useContext(ModalMenuContext);
+  const { openTaskModal } = useContext(TaskModalContext);
+  const { activeBoard } = useContext(BoardsContentContext);
 
   const [isButtonDropdownVisible, setIsButtonDropdownVisible] =
     useState<boolean>(false);
@@ -46,6 +50,10 @@ const Header = () => {
     }
   };
 
+  const handleOpenTaskModal = () => {
+    openTaskModal();
+  };
+
   return (
     <>
       <header className={styles["header"]}>
@@ -54,7 +62,7 @@ const Header = () => {
           {isBelowDesktop ? (
             <Button
               variant="ghost"
-              label="Marketing Plan"
+              label={activeBoard.boardTitle}
               buttonWithArrow
               Icon={<ChevronDown className={styles["chevron-icon"]} />}
               onClick={handleToggleDropdown}
@@ -65,12 +73,18 @@ const Header = () => {
         </div>
         {!isBelowDesktop && (
           <div className={styles["header-wrapper"]}>
-            <h3 className={styles["active-board-name"]}>Marketing Plan</h3>
+            <h3 className={styles["active-board-name"]}>
+              {activeBoard.boardTitle}
+            </h3>
           </div>
         )}
         <div className={styles["buttons-wrapper"]}>
           {!isBelowDesktop && (
-            <Button label="+ Add New Task" variant="secondary" />
+            <Button
+              label="+ Add New Task"
+              variant="secondary"
+              onClick={handleOpenTaskModal}
+            />
           )}
           {isBelowDesktop && renderButton()}
           <Button
