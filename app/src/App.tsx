@@ -19,13 +19,11 @@ function App() {
         <BoardsContentProvider>
           <ThemeToggleProvider>
             <ModalMenuProvider>
-              <div className="App">
-                <Header />
-                <Sidebar />
-                <ModalMenu />
-                <ModalBoard />
-                <NewTask />
-              </div>
+              <Header />
+              <Sidebar />
+              <ModalMenu />
+              <ModalBoard />
+              <NewTask />
             </ModalMenuProvider>
           </ThemeToggleProvider>
         </BoardsContentProvider>
