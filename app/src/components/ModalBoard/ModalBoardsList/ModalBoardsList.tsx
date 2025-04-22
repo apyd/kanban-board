@@ -9,8 +9,8 @@ import type { BoardsListProps } from "./ModalBoardsList.types";
 import Cross from "@assets/icons/cross.svg?react";
 import styles from "./ModalBoardsList.module.scss";
 import Button from "@components/ui/Button/Button/Button";
-import SortableListItem from "./SortableListItem/SortableListItem";
-import { Column } from "src/shared/types";
+import SortableListItem from "@components/SortableListItem/SortableListItem";
+import { Column } from "@shared/types";
 
 const ModalBoardsList = ({
   columns,
@@ -48,11 +48,13 @@ const ModalBoardsList = ({
                 {columns.length > 1 ? (
                   <Button
                     variant="ghost"
-                    Icon={<Cross />}
+                    width="max-content"
                     onClick={(e: Event) =>
                       handleDeleteColumn(e, columnIndex.toString())
                     }
-                  />
+                  >
+                    {<Cross />}
+                  </Button>
                 ) : null}
               </SortableListItem>
             ))}
