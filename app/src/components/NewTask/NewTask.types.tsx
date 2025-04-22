@@ -6,5 +6,6 @@ export type Subtasks = {
 export type Tasks = {
   taskTitle: string;
   taskId: string;
+  taskDescription?: string;
   subtasks: Subtasks[];
 };

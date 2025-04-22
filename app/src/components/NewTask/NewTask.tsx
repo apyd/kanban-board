@@ -14,17 +14,17 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { restrictToParentElement } from "@dnd-kit/modifiers";
-import SortableSubtaskListItem from "./SortableSubtaskList/SortableSubtaskListItem";
+import SortableListItem from "@components/SortableListItem/SortableListItem";
 import { DragEndEvent } from "@dnd-kit/core/dist/types/events";
 import { arrayMove } from "@dnd-kit/sortable";
 
 const NewTask = () => {
   const { isTaskModalOpen, closeTaskModal } = useContext(TaskModalContext);
   const { activeBoard } = useContext(BoardsContentContext);
-  //   const [tasks, setTasks] = useState<Tasks[]>([]);
   const [subtasks, setSubtasks] = useState<Subtasks[]>([
     { subtaskTitle: "", subtaskId: "" },
   ]);
+  const [selectValue, setSelectValue] = useState<string>("");
 
   const taskNameRef = useRef<HTMLInputElement>(
     null
@@ -39,7 +39,7 @@ const NewTask = () => {
   ) => {
     const inputValue = event.target.value;
     setSubtasks((prevValue) => {
-      const newSubtasks = [...prevValue]; // [{subtaskTitle: "hello", subtaskId: "1"},subtaskTitle: "hello2", subtaskId: "2"}, subtaskTitle: "hello3", subtaskId: "3"} ]
+      const newSubtasks = [...prevValue];
       newSubtasks[index].subtaskTitle = inputValue;
       return newSubtasks;
     });
@@ -52,7 +52,7 @@ const NewTask = () => {
     ]);
   };
 
-  const handleDeleteSubtask = (event: Event, index: number) => {
+  const handleDeleteSubtask = (event: MouseEvent, index: number) => {
     event.preventDefault();
     setSubtasks((prevSubtasks) => {
       const subtasksCopy = [...prevSubtasks];
@@ -109,7 +109,7 @@ const NewTask = () => {
                 >
                   {subtasks.map((subtask, subtaskIndex) => {
                     return (
-                      <SortableSubtaskListItem
+                      <SortableListItem
                         id={subtask.subtaskId}
                         key={subtask.subtaskId}
                       >
@@ -125,43 +125,53 @@ const NewTask = () => {
                         {subtasks.length > 1 ? (
                           <Button
                             variant="ghost"
-                            Icon={<Cross />}
-                            onClick={(event) =>
+                            width="max-content"
+                            onClick={(event: MouseEvent) =>
                               handleDeleteSubtask(event, subtaskIndex)
                             }
-                          />
+                          >
+                            {<Cross />}
+                          </Button>
                         ) : null}
-                      </SortableSubtaskListItem>
+                      </SortableListItem>
                     );
                   })}
                 </SortableContext>
               </ul>
             </DndContext>
             <Button
-              variant="primary"
-              label="Add New Subtask"
+              variant="contained"
+              align="center"
+              color="secondary"
               type="button"
-              withStaticStyles
-              buttonCentered
               onClick={handleAddSubtask}
-            />
+            >
+              <span className={styles["button-label"]}>Add New Subtask</span>
+            </Button>
             <div className={styles["select"]}>
               <label className={styles["label"]} htmlFor="task-status">
                 Current Status
               </label>
-              <select id="task-status" className={styles["select-status"]}>
+              <select
+                id="task-status"
+                className={styles["select-status"]}
+                onChange={(e) => setSelectValue(e.target.value)}
+                value={selectValue}
+              >
                 {activeBoard.boardColumns.map((column) => {
                   return <option value={column.value}>{column.value}</option>;
                 })}
               </select>
             </div>
             <Button
-              variant="primary"
-              label="Create Task"
               type="submit"
-              withStaticStyles
-              buttonCentered
-            />
+              variant="contained"
+              color="secondary"
+              align="center"
+              // label="Create Task"
+            >
+              <span className={styles["button-label"]}>Create Task</span>
+            </Button>
           </form>
         </>
       )}
@@ -176,80 +186,3 @@ const NewTask = () => {
 };
 
 export default NewTask;
-
-//dlaczego ITEMS w SortableCOntext to musi być id a nie po prostu array subtasks?
-
-// const createTaskModal = () => {
-//     return (
-//       <>
-//         <h2 className={styles["heading"]}>{activeBoard.boardTitle}</h2>
-//         <form>
-//           <Input
-//             type="text"
-//             id="task-name"
-//             label="Task Name"
-//             ref={taskNameRef}
-//             required
-//           />
-//           <Input
-//             type="text"
-//             id="task-description"
-//             label="Description"
-//             required
-//           />
-//           <label className={styles["label"]}>Subtasks</label>
-//           <ul className={styles["tasks-list"]}>
-//             {subtasks.map((subtask, subtaskIndex) => {
-//               return (
-//                 <li className={styles["task-item"]}>
-//                   <Input
-//                     type="text"
-//                     id={`subtask-${subtaskIndex}`}
-//                     onChange={(event) =>
-//                       handleChangeSubtasksValue(event, subtaskIndex)
-//                     }
-//                     value={subtask.subtaskTitle}
-//                     required
-//                   />
-//                   {subtasks.length > 1 ? (
-//                     <Button
-//                       variant="ghost"
-//                       Icon={<Cross />}
-//                       onClick={(event) =>
-//                         handleDeleteSubtask(event, subtaskIndex)
-//                       }
-//                     />
-//                   ) : null}
-//                 </li>
-//               );
-//             })}
-//           </ul>
-//           <Button
-//             variant="primary"
-//             label="Add New Subtask"
-//             type="button"
-//             withStaticStyles
-//             buttonCentered
-//             onClick={handleAddSubtask}
-//           />
-//           <div className={styles["select"]}>
-//             <label className={styles["label"]} htmlFor="task-status">
-//               Current Status
-//             </label>
-//             <select id="task-status" className={styles["select-status"]}>
-//               {activeBoard.boardColumns.map((column) => {
-//                 return <option value={column.value}>{column.value}</option>;
-//               })}
-//             </select>
-//           </div>
-//           <Button
-//             variant="primary"
-//             label="Create Task"
-//             type="submit"
-//             withStaticStyles
-//             buttonCentered
-//           />
-//         </form>
-//       </>
-//     );
-//   };
