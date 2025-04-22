@@ -13,12 +13,6 @@ const BoardsList = () => {
     handleActiveBoard,
   } = useContext(BoardsContentContext);
   const { openBoardModal } = useContext(BoardModalContext);
-  // const [activeElementId, setActiveElementId] = useState<string>();
-
-  // const handleActiveElement = (boardId: string) => {
-  //   const activeElement = boards.find((board) => board.boardId === boardId);
-  //   setActiveElementId(activeElement?.boardId);
-  // };
 
   return (
     <section className={styles["boards"]}>
@@ -33,28 +27,32 @@ const BoardsList = () => {
             return (
               <li key={board.boardId} className={styles["boards-list-item"]}>
                 <Button
-                  variant="primary"
+                  variant="text"
+                  align="left"
                   rounded="right-rounded"
-                  label={board.boardTitle}
-                  current={activeBoardId === board.boardId}
-                  Icon={<BoardIcon className={styles["board-icon"]} />}
+                  active={activeBoardId === board.boardId}
                   onClick={() => handleActiveBoard(board.boardId)}
-                  as="a"
                   href="#"
-                ></Button>
+                >
+                  <BoardIcon className={styles["board-icon"]} />
+                  <span className={styles["board-title"]}>
+                    {board.boardTitle}
+                  </span>
+                </Button>
               </li>
             );
           })}
         </ul>
       )}
       <Button
-        variant="primary"
+        variant="contained"
+        align="left"
         rounded="right-rounded"
-        label="Create New Board"
-        withStaticStyles
-        Icon={<PlusIcon className={styles["plus-icon"]} />}
         onClick={openBoardModal}
-      ></Button>
+      >
+        {<PlusIcon className={styles["plus-icon"]} />}
+        <span className={styles["button-label"]}> Create New Board</span>
+      </Button>
     </section>
   );
 };
