@@ -15,7 +15,7 @@ const ModalBoard = () => {
   const [boardColumns, setBoardColumns] = useState<Column[]>([
     { id: uuidv4(), value: "" },
   ]);
-  const [isInvalidColumns, setIsInvalidColumns] = useState<boolean | null>(
+  const [isAnyColumnInvalid, setIsAnyColumnInvalid] = useState<boolean | null>(
     null
   );
   const [isInvalidTitle, setIsInvalidTitle] = useState<boolean | null>(null);
@@ -74,14 +74,14 @@ const ModalBoard = () => {
 
     const isColumnInvalid = boardColumns.some((column) => column.value === "");
     if (isColumnInvalid) {
-      setIsInvalidColumns(true);
+      setIsAnyColumnInvalid(true);
       return;
     }
 
     addBoard(boardTitleRef.current.value, boardColumns);
     boardTitleRef.current.value = "";
     setBoardColumns([{ id: uuidv4(), value: "" }]);
-    setIsInvalidColumns(false);
+    setIsAnyColumnInvalid(false);
     setIsInvalidTitle(false);
     closeBoardModal();
   };
@@ -102,7 +102,7 @@ const ModalBoard = () => {
     closeBoardModal();
     boardTitleRef.current.value = "";
     setBoardColumns([{ id: uuidv4(), value: "" }]);
-    setIsInvalidColumns(false);
+    setIsAnyColumnInvalid(false);
     setIsInvalidTitle(false);
   };
 
@@ -137,7 +137,7 @@ const ModalBoard = () => {
             handleReorderColumns={handleReorderColumns}
           />
         </div>
-        {isInvalidColumns && (
+        {isAnyColumnInvalid && (
           <div className={styles["input-error"]}>
             <span className={styles["input-error-message"]}>
               Please, make sure no fields are empty
@@ -147,20 +147,22 @@ const ModalBoard = () => {
         <div className={styles["buttons-wrapper"]}>
           <Button
             type="button"
-            variant="primary"
-            label="+ Add New Column"
-            withStaticStyles
+            variant="contained"
+            color="secondary"
             onClick={handleAddNewColumn}
-            buttonCentered
-          />
+            align="center"
+          >
+            <span className={styles["button-label"]}>+ Add New Column</span>
+          </Button>
           <Button
             type="submit"
             form="board-columns-form"
-            variant="primary"
-            label="Create New Board"
-            withStaticStyles
-            buttonCentered
-          />
+            variant="contained"
+            color="secondary"
+            align="center"
+          >
+            <span className={styles["button-label"]}>Create New Board</span>
+          </Button>
         </div>
       </div>
     </Modal>
