@@ -31,24 +31,26 @@ const Sidebar = () => {
         </div>
         <div className={styles["sidebar-toggle-wrapper"]}>
           <Button
-            variant="primary"
+            variant="contained"
+            align="left"
             rounded="right-rounded"
-            Icon={<HideIcon className="hide-icon" />}
-            label="HIDE SIDEBAR"
-            withStaticStyles
             onClick={handleToggleSidebar}
-          />
+          >
+            <span className={styles["button-label"]}>HIDE SIDEBAR</span>
+            {<HideIcon className="hide-icon" />}
+          </Button>
         </div>
       </div>
     ) : (
       <div className={styles["sidebar-toggle-wrapper"]}>
         <Button
-          variant="primary"
+          variant="contained"
+          align="left"
           rounded="right-rounded"
-          Icon={<HideIcon className={styles["hide-icon"]} />}
-          withStaticStyles
           onClick={handleToggleSidebar}
-        />
+        >
+          {<HideIcon className={styles["hide-icon"]} />}
+        </Button>
       </div>
     );
   };
