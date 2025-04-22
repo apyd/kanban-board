@@ -1,16 +1,17 @@
+import React from "react";
+
 export type ButtonProps = {
-  current?: boolean;
-  withStaticStyles?: boolean;
-  label?: string;
+  children?: React.ReactNode;
+  active?: boolean;
   disabled?: boolean;
-  variant?: "primary" | "secondary" | "destructive" | "ghost";
-  Icon?: React.ReactNode;
+  variant?: "text" | "contained" | "outlined" | "ghost";
+  align?: "left" | "right" | "center";
+  color?: "primary" | "secondary" | "error" | "success";
   rounded?: "full-rounded" | "right-rounded" | "left-rounded" | "no-rounded";
-  buttonWithArrow?: boolean;
-  buttonCentered?: boolean;
+  width?: "full-width" | "max-content";
   type?: "button" | "submit" | "reset";
-  onClick?: (e: Event) => void;
-  as?: React.ElementType;
+  onClick?: React.MouseEventHandler<HTMLButtonElement> &
+    React.MouseEventHandler<HTMLAnchorElement>;
   href?: string;
   form?: string;
 };

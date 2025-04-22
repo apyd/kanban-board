@@ -3,34 +3,33 @@ import { ButtonProps } from "./Button.types";
 import styles from "./Button.module.scss";
 
 const Button = ({
-  label,
-  Icon,
-  current = false,
-  withStaticStyles = false,
-  variant = "primary",
+  children,
+  active = false,
+  variant = "text",
+  align = "center",
+  color = "primary",
   rounded = "full-rounded",
-  buttonWithArrow = false,
-  buttonCentered = false,
+  width = "full-width",
   onClick,
-  as: Component = "button",
   ...rest
 }: ButtonProps) => {
+  const Component = rest.href ? "a" : "button";
   return (
     <Component
       className={clsx(
         styles["button"],
         styles[`button-${variant}`],
         styles[`button-${rounded}`],
-        { [styles["button-active"]]: current },
-        { [styles["button-static"]]: withStaticStyles },
-        { [styles["button-dropdown"]]: buttonWithArrow },
-        { [styles["button-centered"]]: buttonCentered }
+        styles[`button-${align}`],
+        styles[`button-${color}`],
+
+        { [styles["button-narrow"]]: width === "max-content" },
+        { [styles["button-active"]]: active }
       )}
       onClick={onClick}
       {...rest}
     >
-      {Icon && <span className={styles["button-icon"]}>{Icon}</span>}
-      {label && <span className={styles["button-label"]}>{label}</span>}
+      {children}
     </Component>
   );
 };
