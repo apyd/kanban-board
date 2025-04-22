@@ -28,11 +28,7 @@ export const TaskModalProvider = ({ children }: TaskModalContext) => {
     closeTaskModal,
   };
 
-  return (
-    <TaskModalContext.Provider value={taskModalCtx}>
-      {children}
-    </TaskModalContext.Provider>
-  );
+  return <TaskModalContext value={taskModalCtx}>{children}</TaskModalContext>;
 };
 
 export default TaskModalContext;
