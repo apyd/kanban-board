@@ -28,11 +28,7 @@ export const ModalMenuProvider = ({ children }: ModalMenuContext) => {
     closeModalMenu,
   };
 
-  return (
-    <ModalMenuContext.Provider value={modalMenuCtx}>
-      {children}
-    </ModalMenuContext.Provider>
-  );
+  return <ModalMenuContext value={modalMenuCtx}>{children}</ModalMenuContext>;
 };
 
 export default ModalMenuContext;

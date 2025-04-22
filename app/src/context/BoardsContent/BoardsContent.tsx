@@ -4,8 +4,9 @@ import { Column } from "src/shared/types";
 import { v4 as uuidv4 } from "uuid";
 
 const BoardsContentContext = createContext<{
-  boardsContent: BoardContent[]; // [{boardTitle: x, boardColumns: [{id: a, value: b, tasks: [{taskName: c, taskId: d, taskDescription: e, subtasks: [{subtaskName: f, subtaskId: g}]}]}], boardId: y}]
+  boardsContent: BoardContent[];
   handleAddBoard: (boardTitle: string, boardColumns: Column[]) => void;
+
   handleActiveBoard: (boardId: string) => void;
   activeBoardId: string | undefined;
   activeBoard: BoardContent;
@@ -56,7 +57,6 @@ export const BoardsContentProvider = ({ children }: BoardsContentContext) => {
       setActiveBoard(activeBoard);
       setActiveBoardId(activeBoard?.boardId);
     }
-    console.log(activeBoard);
   };
 
   const boardsContentCtx = {
@@ -68,9 +68,9 @@ export const BoardsContentProvider = ({ children }: BoardsContentContext) => {
   };
 
   return (
-    <BoardsContentContext.Provider value={boardsContentCtx}>
+    <BoardsContentContext value={boardsContentCtx}>
       {children}
-    </BoardsContentContext.Provider>
+    </BoardsContentContext>
   );
 };
 export default BoardsContentContext;

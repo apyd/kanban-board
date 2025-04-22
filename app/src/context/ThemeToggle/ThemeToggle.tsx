@@ -25,9 +25,7 @@ export const ThemeToggleProvider = ({ children }: ThemeToggleContext) => {
   };
 
   return (
-    <ThemeToggleContext.Provider value={ThemeToggleCtx}>
-      {children}
-    </ThemeToggleContext.Provider>
+    <ThemeToggleContext value={ThemeToggleCtx}>{children}</ThemeToggleContext>
   );
 };
 

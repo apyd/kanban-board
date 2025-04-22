@@ -29,9 +29,7 @@ export const BoardModalProvider = ({ children }: BoardModalContextType) => {
   };
 
   return (
-    <BoardModalContext.Provider value={boardModalCtx}>
-      {children}
-    </BoardModalContext.Provider>
+    <BoardModalContext value={boardModalCtx}>{children}</BoardModalContext>
   );
 };
 
