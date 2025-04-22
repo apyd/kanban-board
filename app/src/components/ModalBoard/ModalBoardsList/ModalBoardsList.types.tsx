@@ -1,5 +1,5 @@
 import { DragEndEvent } from "@dnd-kit/core/dist/types";
-import { Column } from "src/shared/types";
+import { Column } from "@shared/types";
 
 export type BoardsListProps = {
   columns: Column[];
