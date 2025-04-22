@@ -2,9 +2,9 @@
 
 .item-content {
   display: flex;
-  flex: 1;
+  width: 100%;
 }
+
 .drag-handle {
   color: $c-grey-300;
-  margin-bottom: 0.5rem;
 }

@@ -24,12 +24,7 @@ const SortableListItem = ({ id, children }: SortableListItem) => {
   };
 
   return (
-    <li
-      className={styles["board-column"]}
-      key={id}
-      ref={setNodeRef}
-      style={style}
-    >
+    <li className={styles["list-item"]} key={id} ref={setNodeRef} style={style}>
       <div
         className={styles["drag-handle"]}
         {...listeners}
