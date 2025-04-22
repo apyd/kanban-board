@@ -6,7 +6,7 @@
 }
 
 .board-modal-title {
-  @include f.font-heading1-bold;
+  @include f.font-heading2-bold;
   color: c.$c-purple;
 }
 .buttons-wrapper {
@@ -14,6 +14,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 0.5rem;
+  padding-top: 1rem;
 }
 
 .input-error {

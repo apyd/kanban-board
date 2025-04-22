@@ -1,7 +1,14 @@
 @use "@scss/variables/colors" as c;
 
 .heading {
-  padding-bottom: 1rem;
+  color: c.$c-purple;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .task-item {
@@ -24,5 +31,9 @@
 }
 
 .label {
+  color: c.$c-grey-300;
+}
+
+.without-active-board {
   color: c.$c-grey-300;
 }

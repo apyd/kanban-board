@@ -45,3 +45,8 @@
 .boards-heading {
   font-size: clamp(1rem, 0.8rem + 0.9vw, 1.2rem);
 }
+
+.button-label {
+  padding-left: 0.2rem;
+  @include f.font-article-md();
+}

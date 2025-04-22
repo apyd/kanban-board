@@ -1,81 +1,97 @@
 @use "@scss/mixins/typography" as t;
 @use "@scss/mixins/breakpoints" as b;
+@use "@scss/variables/colors" as c;
 
 .header {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
   position: relative;
   max-height: 10vh;
-}
-
-.logo {
-  @include b.sm() {
-    width: 2rem;
-  }
-  & {
-    width: 3rem;
-  }
-}
-
-.buttons-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.8rem;
+  @include b.lg() {
+    gap: 0.5rem;
+  }
+  @include b.md() {
+    gap: 0;
+  }
+  @include b.sm() {
+    gap: 0;
+  }
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons-wrapper {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.logo {
+  @include b.sm() {
+    width: 15rem;
+  }
+  & {
+    width: 3rem;
+  }
 }
 
 .logo-heading {
   @include t.font-heading1-bold();
-  color: var(--c-bg-4);
-  margin-top: 0.5rem;
+  color: var(--c-typo-2);
+  margin-top: 0.4rem;
+  @include b.md() {
+    @include t.font-article-md();
+    border-radius: 5rem;
+  }
+  @include b.sm() {
+    @include t.font-article-sm();
+    border-radius: 5rem;
+  }
 }
 
 .header-board-options {
   display: none;
   position: absolute;
   top: 3rem;
-  left: 0.5rem;
-  padding: 0.5rem 2rem;
+  left: 4rem;
   border-radius: 1rem;
-
   @include b.md() {
     top: 3rem;
-    left: -3.5rem;
-    padding: 1rem;
+    left: 0rem;
+    @include t.font-article-sm();
+  }
+  @include b.sm() {
+    top: 3rem;
+    left: 0rem;
     @include t.font-article-sm();
   }
 }
 .visible {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .button-container {
   background-color: transparent;
   cursor: pointer;
-}
-
-.header-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex: 1;
 }
 
 .active-board-name {
   color: var(--c-typo-2);
   @include t.font-heading3-regular();
-}
-
-.button-icon {
-  width: 1.5rem;
 }
