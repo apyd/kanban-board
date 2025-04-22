@@ -1,4 +1,4 @@
-import { Column } from "src/shared/types";
+import { Column } from "@/shared/types";
 
 export type BoardsContentContext = {
   children: React.ReactNode;
